@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages (GitHub Actions Pages)
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,13 +18,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v4
+      - name: Configure git for commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy to GitHub Pages (peaceiris)
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
+          force_orphan: true
