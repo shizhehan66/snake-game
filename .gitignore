@@ -1,0 +1,5 @@
+# Node / VS Code / system files
+node_modules/
+.vscode/
+.DS_Store
+*.log

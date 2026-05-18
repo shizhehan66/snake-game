@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>贪吃蛇小游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>贪吃蛇</h1>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div class="info">
+      <div>分数: <span id="score">0</span></div>
+      <div>按键控制: ↑ ↓ ← →</div>
+      <button id="restartBtn">重新开始</button>
+    </div>
+    <p class="hint">吃到食物，蛇会变长。撞墙或撞到自己游戏结束。</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
